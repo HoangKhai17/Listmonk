@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: listmonk_db
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: listmonk
+      POSTGRES_PASSWORD: listmonk_password
+      POSTGRES_DB: listmonk
+    volumes:
+      - listmonk_data:/var/lib/postgresql/data
+
+volumes:
+  listmonk_data:
